@@ -33,6 +33,7 @@ namespace quizy
             warningLabel3.Text = "";
             warningLabel1.Text = "";
             warningLabel2.Text = "";
+            warningLabel0.Text = "";
         }
 
         //dodanie pytania do listy/edycja pytania listy
@@ -118,6 +119,19 @@ namespace quizy
             editExistingQuestion = false;
             questionTextBox.Text = "";
            addButton.Text = "Dodaj";
+        }
+
+        //ustawienie nazwy quizu
+        protected void setQuizNameButton_Click(object sender, EventArgs e)
+        {
+            disableEditMode();
+
+            if (quizNameTextBox.Text == "")
+            {
+                warningLabel0.Text = "Nazwa quizu jest pusta";
+                quizNameLabel.Text = "Podaj nazwę quizu";
+            }
+            else quizNameLabel.Text = quizNameTextBox.Text;
         }
     }
 }

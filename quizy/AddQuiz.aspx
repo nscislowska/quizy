@@ -8,10 +8,17 @@
     <title></title>
 </head>
 <body>
-    <div id="title">
+    <form id="addQuiz" runat="server">
+        <div id="title">
             Dodaj Quiz
         </div>
-    <form id="addQuiz" runat="server">
+        <div id="addQuizName">
+            <asp:Label ID="quizNameLabel" runat="server" Text="Podaj nazwę quizu"/><br />
+            <asp:TextBox ID="quizNameTextBox" runat="server"></asp:TextBox>
+            <asp:Button ID="setQuizNameButton" runat="server" Text="Dodaj" OnClick="setQuizNameButton_Click" />
+            <br />
+             <asp:Label ID="warningLabel0" CssClass="warning" runat="server" Text=""></asp:Label>
+        </div>
         <div id="addQuestion">
             <asp:Label ID="plainText" runat="server" Text="Dodaj pytanie"/><br />
             <asp:TextBox ID="questionTextBox" runat="server" Width="475px"></asp:TextBox>

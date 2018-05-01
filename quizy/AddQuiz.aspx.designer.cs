@@ -22,6 +22,42 @@ namespace quizy {
         protected global::System.Web.UI.HtmlControls.HtmlForm addQuiz;
         
         /// <summary>
+        /// Kontrolka quizNameLabel.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label quizNameLabel;
+        
+        /// <summary>
+        /// Kontrolka quizNameTextBox.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox quizNameTextBox;
+        
+        /// <summary>
+        /// Kontrolka setQuizNameButton.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button setQuizNameButton;
+        
+        /// <summary>
+        /// Kontrolka warningLabel0.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label warningLabel0;
+        
+        /// <summary>
         /// Kontrolka plainText.
         /// </summary>
         /// <remarks>
