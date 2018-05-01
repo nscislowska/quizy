@@ -1,0 +1,15 @@
+﻿body {
+}
+
+div.title{
+    text-align: center;
+}
+
+.errorText{
+    color: darkred;
+}
+
+div#send{
+    text-align: center;
+}
+

@@ -10,7 +10,13 @@ namespace quizy
 {
     public partial class MainPage : System.Web.UI.Page
     {
-       
+
+        private Quiz quiz //przechowuje zawarość całego quizu
+        {
+            get { return (Quiz)Session["Quiz"]; }
+            set {Session["Quiz"] = value; }
+        }
+
         private string editedQuestion //treść edytowanego pytania
         {
             get { return (string) ViewState["editedQuestion"]; }
@@ -27,6 +33,7 @@ namespace quizy
         {
             if (!IsPostBack)
             {
+                this.quiz = new Quiz();
                 this.editExistingQuestion = false;
                 this.editedQuestion = null;
             }
@@ -49,7 +56,7 @@ namespace quizy
             }
 
             //zapisanie zmian lub dodanie pytania do listy
-            if (editExistingQuestion) 
+            if (editExistingQuestion)
             {
                 if (questionListBox.Items.FindByValue(editedQuestion) != null)
                 {
@@ -61,7 +68,11 @@ namespace quizy
 
                 disableEditMode();
             }
-            else questionListBox.Items.Add(newQuestion);
+            else
+            {
+                questionListBox.Items.Add(newQuestion);
+                questionTextBox.Text = "";
+            }
 
         }
 
@@ -96,11 +107,35 @@ namespace quizy
         {
             disableEditMode();
 
+            //sprawdzenie czy wypełniono wymagane pola
+            bool isCorrect = true;
             if (questionListBox.Items.Count == 0)
             {
-                warningLabel3.Text = "Dodaj jakieś pytanie, ćwoku";
+                warningLabel2.Text = "Dodaj przynajmniej jedno pytanie";
+                isCorrect = false;
             }
-            else warningLabel3.Text = "Przejdź dalej jest nieopracowane: przekazanie pytań do formularza dodania odpowiedzi";
+            if (quizNameLabel.Text == "Podaj nazwę quizu")
+            {
+                warningLabel0.Text = "Podaj nazwę quizu, ćwoku";
+                isCorrect = false;
+            }
+
+            if(isCorrect)
+            {
+                //zapisanie nazwy oraz listy pytań do obiektu
+                quiz.Name = quizNameLabel.Text;
+
+                string question;
+                foreach (ListItem item in questionListBox.Items)
+                {
+                    question = item.Value;
+                    quiz.Questions.Add(new Question(question));
+                }
+                //przekierowanie do dodania odpowiedzi
+                Server.Transfer("AddAnswers.aspx");
+            }
+
+            warningLabel3.Text = "Nie można przejść dalej z powodu błędów";
         }
 
         //włączenie trybu edycji pytania
@@ -126,12 +161,18 @@ namespace quizy
         {
             disableEditMode();
 
-            if (quizNameTextBox.Text == "")
+            string newQuizName = quizNameTextBox.Text;
+
+            if (newQuizName == "")
             {
                 warningLabel0.Text = "Nazwa quizu jest pusta";
                 quizNameLabel.Text = "Podaj nazwę quizu";
             }
-            else quizNameLabel.Text = quizNameTextBox.Text;
+            else
+            {
+                quizNameLabel.Text = newQuizName;
+                quizNameTextBox.Text = "";
+            }
         }
     }
 }
