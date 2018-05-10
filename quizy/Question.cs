@@ -15,20 +15,22 @@ namespace quizy
         {
             get;
             set;
-            //{
-            //    if (value != null) this.Text = value;
-            //    else throw new ArgumentNullException($"{nameof(value)} must not be empty.");
-            //}
-
         }
         /// <summary>
         /// Gets the list of answers assigned to a question.
         /// </summary>
-        public List<Answer> Answers //odpowiedzi do pytania
+        public List<Answer> Answers
         {
             get;
         }
-
+        /// <summary>
+        /// record number of a question in a quiz
+        /// </summary>
+        public int RecordNumber
+        {
+            get;
+            set;
+        }
         public Question(string text, List<Answer> answers)
         {
             this.Text = text;
@@ -41,7 +43,7 @@ namespace quizy
         public Question(string text)
         {
             this.Text = text;
-            Answers = null;
+            Answers = new List<Answer>(); ;
         }
 
     }

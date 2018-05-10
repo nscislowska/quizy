@@ -30,11 +30,14 @@
         <div id="questions">
             <asp:Label ID="listLabel" runat="server" Text="Pytania"/><br/>
             <asp:ListBox ID="questionListBox" runat="server"></asp:ListBox>
-            <asp:Button ID="deleteButton" runat="server" Text="Usuń" OnClick="deleteButton_Click" />
-            <asp:Button ID="editButton" runat="server" Text="Edytuj" OnClick="editButton_Click" /><br/>
+            
             <asp:Label ID="warningLabel2" CssClass="errorText" runat="server" Text=""></asp:Label>
         </div>
-        <div id="send">
+        <div class="edit-deleteButtons">
+                <asp:Button ID="deleteButton" runat="server" Text="Usuń" OnClick="deleteButton_Click" />
+                <asp:Button ID="editButton" runat="server" Text="Edytuj" OnClick="editButton_Click" />
+            </div>
+        <div class="send">
             <asp:Label ID="label1" runat="server" Text="Zatwierdź pytania i przejdź do dodania odpowiedzi"/><br/>
             <asp:Button ID="sendButton" runat="server" Text="Przejdź dalej" OnClick="sendButton_Click" /><br //>
             <asp:Label ID="warningLabel3" CssClass="errorText" runat="server" Text=""></asp:Label>

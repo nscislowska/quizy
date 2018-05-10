@@ -112,6 +112,15 @@ namespace quizy {
         protected global::System.Web.UI.WebControls.ListBox questionListBox;
         
         /// <summary>
+        /// Kontrolka warningLabel2.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label warningLabel2;
+        
+        /// <summary>
         /// Kontrolka deleteButton.
         /// </summary>
         /// <remarks>
@@ -128,15 +137,6 @@ namespace quizy {
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button editButton;
-        
-        /// <summary>
-        /// Kontrolka warningLabel2.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label warningLabel2;
         
         /// <summary>
         /// Kontrolka label1.

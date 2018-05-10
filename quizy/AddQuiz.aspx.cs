@@ -17,6 +17,13 @@ namespace quizy
             set {Session["Quiz"] = value; }
         }
 
+        private int ThisQuestionRecordNumber //numer porządkowy aktualnie wyświetlanego pytania 
+                                             //wykorzystywany w dodawaniu odpowiedzi, tu tylko ustawiany
+        {
+            get { return (int)Session["ThisQuestionRecordNumber"]; }
+            set { Session["ThisQuestionRecordNumber"] = value; }
+        }
+
         private string editedQuestion //treść edytowanego pytania
         {
             get { return (string) ViewState["editedQuestion"]; }
@@ -48,7 +55,11 @@ namespace quizy
         {
             //pobranie wpisanego pytania
             string newQuestion = questionTextBox.Text;
-
+            if (newQuestion == "")
+            {
+                warningLabel1.Text = "nie podano pytania";
+                return;
+            }
             //sprawdzenie czy pytanie się powtarza
             if (questionListBox.Items.FindByValue(newQuestion) != null) { 
                 warningLabel1.Text = "podane pytanie już zostało dodane";
@@ -122,17 +133,9 @@ namespace quizy
 
             if(isCorrect)
             {
-                //zapisanie nazwy oraz listy pytań do obiektu
-                quiz.Name = quizNameLabel.Text;
-
-                string question;
-                foreach (ListItem item in questionListBox.Items)
-                {
-                    question = item.Value;
-                    quiz.Questions.Add(new Question(question));
-                }
-                //przekierowanie do dodania odpowiedzi
-                Server.Transfer("AddAnswers.aspx");
+                saveQuizInSession(); //zapisanie quizu w sesji 
+                ThisQuestionRecordNumber = 1; //ustawienie numeru pytania (dla okna odpowiedzi)
+                Server.Transfer("AddAnswers.aspx"); //przekierowanie do dodania odpowiedzi
             }
 
             warningLabel3.Text = "Nie można przejść dalej z powodu błędów";
@@ -172,6 +175,22 @@ namespace quizy
             {
                 quizNameLabel.Text = newQuizName;
                 quizNameTextBox.Text = "";
+            }
+        }
+
+        //zapisanie nazwy oraz listy pytań do obiektu
+        private void saveQuizInSession()
+        {
+            quiz.Name = quizNameLabel.Text;
+
+            string questionText;
+            for (int i = 0; i < questionListBox.Items.Count; i++)
+            {
+                questionText = questionListBox.Items[i].Value;
+                Question question = new Question(questionText);
+                question.RecordNumber = i+1;
+
+                quiz.Questions.Add(question);
             }
         }
     }

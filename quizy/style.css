@@ -3,13 +3,18 @@
 
 div.title{
     text-align: center;
+    background-color:aquamarine;
 }
 
 .errorText{
     color: darkred;
 }
 
-div#send{
+div.send{
     text-align: center;
+}
+
+div.edit-deleteButtons{
+
 }
 

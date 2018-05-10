@@ -22,7 +22,14 @@ namespace quizy
         {
             get; set;
         }
-
+        /// <summary>
+        /// record number of an answer in a question
+        /// </summary>
+        public int RecordNumber
+        {
+            get;
+            set;
+        }
         public Answer(string text, bool isCorrect)
         {
             this.Text = text;
