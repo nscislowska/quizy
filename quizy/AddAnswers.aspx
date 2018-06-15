@@ -13,37 +13,37 @@
     <form id="form1" runat="server">
 
         <div class="title">
-          Odpowiedzi
+          Dodaj odpowiedzi
         </div>
 
-        <div>
+        <div class="margin question">
              <asp:Label ID="QuizNameLabel" runat="server" Text="Nazwa quizu"></asp:Label>
         </div>
 
-        <div>
+        <div class="margin">
             <asp:Label ID="QuestionTextLabel" runat="server" Text="Pytanie"></asp:Label>
         </div>
 
-        <div>
-            <div>
-                <asp:Label ID="Label2" runat="server" Text="Dodaj odpowiedź"></asp:Label>
-                <asp:TextBox ID="AnswerTextBox" runat="server"></asp:TextBox>
-                <asp:Button ID="addAnswerButton" runat="server" Text="Dodaj" OnClick="addAnswerButton_Click" />
-                <div class="errorText">
+        <div class="margin">
+            <div class="margin">
+                <asp:Label ID="Label2"  runat="server" Text="Dodaj odpowiedź"></asp:Label>
+                <asp:TextBox ID="AnswerTextBox"  runat="server"></asp:TextBox>
+                <asp:Button ID="addAnswerButton"  runat="server" Text="Dodaj" OnClick="addAnswerButton_Click" />
+                <div class="errorText margin">
                     <asp:Label ID="warningLabel0" runat="server" Text=""></asp:Label>
                 </div>  
             </div>
-            <div>
+            <div class="margin">
                 <asp:Label ID="Label3" runat="server" Text="Odpowiedzi"></asp:Label>
                 <br/>
                 <asp:ListBox ID="AnswerListBox" runat="server"></asp:ListBox>
-                <div class="errorText">
+                <div class="errorText margin">
                     <asp:Label ID="warningLabel1" runat="server" Text=""></asp:Label>
                 </div> 
             </div>
-            <div>
+            <div class="margin">
                 Poprawna odpowiedź: <asp:Label ID="correctAnswerLabel" runat="server" Text=""></asp:Label>
-                <div class="errorText">
+                <div class="errorText margin">
                     <asp:Label ID="warningLabel3" runat="server" Text=""></asp:Label>
                 </div>
             </div>

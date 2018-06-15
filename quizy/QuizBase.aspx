@@ -14,20 +14,29 @@
         <div class="title">
             Baza quizów
         </div>
-        <div>
+       <div class="margin">
+        <div class="radiobuttonlist lower">
         <asp:RadioButtonList ID="QuizRadioButtonList" AutoPostBack="true" runat="server" OnSelectedIndexChanged="QuizRadioButtonList_SelectedIndexChanged">
         </asp:RadioButtonList>
             </div>
-        <div>
+        <div class="margin sidemenu">
+            <div class="margin">
             <asp:Button ID="BackButton" runat="server" Text="Wstecz" OnClick="BackButton_Click" />
+                </div>
+            <div class="margin">
             <asp:Button ID="SolveButton" runat="server" Text="Rozwiąż" OnClick="SolveButton_Click" />
+                </div>
+            <div class="margin">
             <asp:Button ID="DeleteButton" runat="server" Text="Usuń" OnClick="DeleteButton_Click" />
-        </div>
-        <div class="errorText">
+                </div>
+            <div class="errorText">
 
             <asp:Label ID="warningLabel1" runat="server" Text=""></asp:Label>
 
             </div>
+        </div>
+           </div>
+        
        
     </form>
 </body>

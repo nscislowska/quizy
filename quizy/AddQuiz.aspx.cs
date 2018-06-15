@@ -146,7 +146,7 @@ namespace quizy
             }
             if (quizNameLabel.Text == "Podaj nazwę quizu")
             {
-                warningLabel0.Text = "Podaj nazwę quizu, ćwoku";
+                warningLabel0.Text = "Dodaj nazwę quizu";
                 isCorrect = false;
             }
 

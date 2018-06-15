@@ -14,20 +14,21 @@
         <div class="title">
             <asp:Label ID="titleLabel" runat="server" Text=""></asp:Label>
         </div>
-
-        <div class="">
+        <div class="center">
+        <div class="question margin">
             <asp:Label ID="questionLabel" runat="server" Text=""></asp:Label>
         </div>
-        <div>
+        <div class="radiobuttonlist left">
             <asp:RadioButtonList ID="answerRadioButtonList" AutoPostBack="true" runat="server" OnSelectedIndexChanged="answerRadioButtonList_SelectedIndexChanged"></asp:RadioButtonList>
             </div>
-        <div>
+        <div class="margin">
             <asp:Button ID="BackButton" runat="server" Text="Wstecz" OnClick="BackButton_Click" />
             <asp:Button ID="NextNextButton" runat="server" Text="Dalej" OnClick="NextNextButton_Click" />
             </div>
-        <div class="errorText">
+        <div class="errorText margin">
             <asp:Label ID="warningLabel1"  runat="server" Text=""></asp:Label>
         </div>
+            </div>
     </form>
 </body>
 </html>

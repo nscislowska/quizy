@@ -16,17 +16,21 @@
                 Strona główna
             </div>
         </div>
-        <div>
+        <div class="center">
+        <div class="margin larger">
             <asp:Label ID="MenuLabel" runat="server" Text="Menu"></asp:Label>
             </div>
-        <div>
+        <div class="margin">
             
         <asp:Button ID="AddQuizButton" runat="server" Text="Dodaj quiz" OnClick="AddQuizButton_Click" />
+            </div>
+            <div class="margin">
         <asp:Button ID="QuizDBButton" runat="server" Text="Baza quizów" OnClick="QuizDBButton_Click" />
         </div>
-        <div class="errorText">
+        <div class="errorText margin">
             <asp:Label ID="warningLabel1" runat="server" Text=""></asp:Label>
             </div>
+        <div>
     </form>
 </body>
 </html>

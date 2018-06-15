@@ -14,12 +14,14 @@
         <div class="title">
             Wyniki
         </div>
-        <div>
-            Twój wynik to: <asp:Label ID="pointsLabel" runat="server" Text=""></asp:Label> / <asp:Label ID="totalLabel" runat="server" Text=""></asp:Label>
+        <div class="center margin">
+        <div class="question margin">
+            Twój wynik to: <asp:Label ID="pointsLabel" CssClass="color:red" runat="server" Text=""></asp:Label> / <asp:Label ID="totalLabel" runat="server" Text=""></asp:Label>
         </div>
-        <div>
+        <div class="margin">
             <asp:Button ID="BackButton" runat="server" Text="Powrót" OnClick="BackButton_Click" />
         </div>
+            </div>
     </form>
 </body>
 </html>
