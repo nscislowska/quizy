@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+
 namespace quizy
 {
     public partial class AddAnswers : System.Web.UI.Page
@@ -14,7 +16,11 @@ namespace quizy
             get { return (Quiz)Session["Quiz"]; }
             set { Session["Quiz"] = value; }
         }
-
+        private string AddQuizError //zawiera błąd dodawania quizu
+        {
+            get { return (string)Session["AddQuizError"]; }
+            set { Session["AddQuizError"] = value; }
+        }
         private int ThisQuestionRecordNumber //numer porządkowy aktualnie wyświetlanego pytania
         {
             get { return (int)Session["ThisQuestionRecordNumber"]; }
@@ -39,11 +45,23 @@ namespace quizy
             {
                 this.editedAnswer = null;
                 this.editExistingAnswer = false;
+
+                if (AddQuizError != null)
+                {
+                    warningLabel2.Text = "Błąd dodania quizu: " + AddQuizError;
+                }
+
+                if (Quiz.Questions[ThisQuestionRecordNumber - 1].Answers.Count > 0) loadAnswers();
+
+
             }
+            else AddQuizError = null;
 
             QuizNameLabel.Text = Quiz.Name;
-            QuestionTextLabel.Text = "Pytanie "+ThisQuestionRecordNumber+": " + Quiz.Questions[ThisQuestionRecordNumber-1].Text;//Quiz.Questions.Count.ToString();
-            warningLabel0.Text = warningLabel1.Text = warningLabel2.Text =warningLabel3.Text= "";
+            QuestionTextLabel.Text = "Pytanie "+ThisQuestionRecordNumber+": " + Quiz.Questions[ThisQuestionRecordNumber-1].Text;
+            warningLabel0.Text = warningLabel1.Text =warningLabel3.Text= "";
+
+            if (AddQuizError == null) warningLabel2.Text = ""; ;
         }
 
         protected void addAnswerButton_Click(object sender, EventArgs e)
@@ -116,7 +134,7 @@ namespace quizy
                 warningLabel1.Text = "Dodaj przynajmniej jedno pytanie";
                 isCorrect = false;
             }
-            if (correctAnswerLabel.Text == "brak")
+            if (correctAnswerLabel.Text == "")
             {
                 warningLabel3.Text = "Wybierz prawidłową odpowiedź";
                 isCorrect = false;
@@ -157,6 +175,9 @@ namespace quizy
         {
             string answerText;
             bool correct;
+
+            Quiz.Questions[ThisQuestionRecordNumber - 1].Answers.Clear();
+
             for (int i = 0; i < AnswerListBox.Items.Count; i++)
             {
                 answerText = AnswerListBox.Items[i].Value;
@@ -182,8 +203,39 @@ namespace quizy
             else
             {
                 warningLabel1.Text = "Wybierz pytanie z listy";
-                correctAnswerLabel.Text = "brak";
+                correctAnswerLabel.Text = "";
             }
+        }
+
+        protected void BackButton_Click(object sender, EventArgs e)
+        {
+            if (ThisQuestionRecordNumber == 1)
+            {
+                Server.Transfer("AddQuiz.aspx");
+            }
+            else
+            {
+                ThisQuestionRecordNumber = ThisQuestionRecordNumber - 1;
+                Server.Transfer("AddAnswers.aspx");
+            }
+            
+        }
+
+        private void loadAnswers()
+        {
+            disableEditMode();
+
+            AnswerListBox.Items.Clear();
+
+            foreach (Answer answer in Quiz.Questions[ThisQuestionRecordNumber - 1].Answers)
+            {
+                AnswerListBox.Items.Add(answer.Text);
+                if (answer.IsCorrect == true)
+                {
+                    correctAnswerLabel.Text = answer.Text;
+                }
+            }
+            return;
         }
     }
 }

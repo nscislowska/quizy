@@ -34,7 +34,8 @@ namespace quizy
         public Question(string text, List<Answer> answers)
         {
             this.Text = text;
-            for(int i=1; i<answers.Count; i++)
+            this.Answers = new List<Answer>();
+            for (int i=0; i<answers.Count; i++)
             {
                 this.Answers.Add(answers[i]);
             }
@@ -43,8 +44,18 @@ namespace quizy
         public Question(string text)
         {
             this.Text = text;
-            Answers = new List<Answer>(); ;
+            Answers = new List<Answer>();
         }
 
+        public Question(string text, List<Answer> answers, int RecordNumber)
+        {
+            this.Text = text;
+            this.Answers = new List<Answer>();
+            for (int i = 0; i < answers.Count; i++)
+            {
+                this.Answers.Add(answers[i]);
+            }
+            this.RecordNumber = RecordNumber;
+        }
     }
 }

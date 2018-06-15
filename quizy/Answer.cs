@@ -35,6 +35,11 @@ namespace quizy
             this.Text = text;
             this.IsCorrect = isCorrect;
         }
-
+        public Answer(string text, bool isCorrect, int recordNumber)
+        {
+            this.Text = text;
+            this.IsCorrect = isCorrect;
+            this.RecordNumber = recordNumber;
+        }
     }
 }

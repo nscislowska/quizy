@@ -37,13 +37,12 @@
                 <asp:Label ID="Label3" runat="server" Text="Odpowiedzi"></asp:Label>
                 <br/>
                 <asp:ListBox ID="AnswerListBox" runat="server"></asp:ListBox>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                 <div class="errorText">
                     <asp:Label ID="warningLabel1" runat="server" Text=""></asp:Label>
                 </div> 
             </div>
             <div>
-                Poprawna odpowiedź: <asp:Label ID="correctAnswerLabel" runat="server" Text="brak"></asp:Label>
+                Poprawna odpowiedź: <asp:Label ID="correctAnswerLabel" runat="server" Text=""></asp:Label>
                 <div class="errorText">
                     <asp:Label ID="warningLabel3" runat="server" Text=""></asp:Label>
                 </div>
@@ -57,6 +56,7 @@
 
         <div class="send">
             <asp:Label ID="Label4" runat="server" Text="Zatwierdź odpowiedi i przejdź do kolejnego pytania"></asp:Label><br/>
+            <asp:Button ID="BackButton" runat="server" Text="Wstecz" OnClick="BackButton_Click" />
             <asp:Button ID="sendAnswersButton" runat="server" Text="Przejdź dalej" OnClick="sendAnswersButton_Click" />
             <div class="errorText">
                 <asp:Label ID="warningLabel2" runat="server" Text=""></asp:Label>

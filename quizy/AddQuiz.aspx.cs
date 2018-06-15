@@ -4,12 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Sql;
+using System.Data.OleDb;
+using MySql.Data.MySqlClient;
 
 //System.Diagnostics.Debug.WriteLine();
 namespace quizy
 {
     public partial class MainPage : System.Web.UI.Page
     {
+
+        private OleDbConnection connection //połączenie z bazą danych
+        {
+            get { return (OleDbConnection)Session["connection"]; }
+            set { Session["connection"] = value; }
+        }
 
         private Quiz quiz //przechowuje zawarość całego quizu
         {
@@ -38,9 +47,19 @@ namespace quizy
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             if (!IsPostBack)
             {
-                this.quiz = new Quiz();
+
+                if (quiz == null || quiz.Name == null)
+                {
+                    this.quiz = new Quiz();
+                }
+                else
+                {
+                    quizLoad();
+                }
+
                 this.editExistingQuestion = false;
                 this.editedQuestion = null;
             }
@@ -164,6 +183,8 @@ namespace quizy
         {
             disableEditMode();
 
+            bool isCorrect = false;
+
             string newQuizName = quizNameTextBox.Text;
 
             if (newQuizName == "")
@@ -172,6 +193,18 @@ namespace quizy
                 quizNameLabel.Text = "Podaj nazwę quizu";
             }
             else
+            {
+                bool error = SQL.checkIfContains(connection, "quiz", "name", newQuizName );
+
+                if (error)
+                {
+                    warningLabel0.Text = "Nazwa quizu już istnieje";
+                    quizNameLabel.Text = "Podaj nazwę quizu";
+                }
+                else isCorrect = true;
+            }
+
+            if (isCorrect)
             {
                 quizNameLabel.Text = newQuizName;
                 quizNameTextBox.Text = "";
@@ -183,6 +216,8 @@ namespace quizy
         {
             quiz.Name = quizNameLabel.Text;
 
+            quiz.Questions.Clear();
+
             string questionText;
             for (int i = 0; i < questionListBox.Items.Count; i++)
             {
@@ -192,6 +227,25 @@ namespace quizy
 
                 quiz.Questions.Add(question);
             }
+        }
+
+        protected void BackHomeButton_Click(object sender, EventArgs e)
+        {
+            quiz = null;
+            Server.Transfer("HomePage.aspx");
+        }
+
+        private void quizLoad()
+        {
+            quizNameLabel.Text = quiz.Name;
+
+            questionListBox.Items.Clear();
+
+            foreach(Question question in quiz.Questions)
+            {
+                questionListBox.Items.Add(question.Text);
+            }
+            return;
         }
     }
 }

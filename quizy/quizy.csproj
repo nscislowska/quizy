@@ -48,6 +48,7 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -77,6 +78,11 @@
   <ItemGroup>
     <Content Include="AddAnswers.aspx" />
     <Content Include="AddQuiz.aspx" />
+    <Content Include="HomePage.aspx" />
+    <Content Include="QuizBase.aspx" />
+    <Content Include="QuizResult.aspx" />
+    <Content Include="SolveQuiz.aspx" />
+    <Content Include="StartPage.aspx" />
     <Content Include="style.css" />
     <Content Include="TestPage.aspx" />
     <Content Include="Web.config" />
@@ -97,9 +103,45 @@
       <DependentUpon>AddQuiz.aspx</DependentUpon>
     </Compile>
     <Compile Include="Answer.cs" />
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Quiz.cs" />
+    <Compile Include="QuizBase.aspx.cs">
+      <DependentUpon>QuizBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuizBase.aspx.designer.cs">
+      <DependentUpon>QuizBase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuizResult.aspx.cs">
+      <DependentUpon>QuizResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuizResult.aspx.designer.cs">
+      <DependentUpon>QuizResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SolveQuiz.aspx.cs">
+      <DependentUpon>SolveQuiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SolveQuiz.aspx.designer.cs">
+      <DependentUpon>SolveQuiz.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SQL.cs" />
+    <Compile Include="StartPage.aspx.cs">
+      <DependentUpon>StartPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StartPage.aspx.designer.cs">
+      <DependentUpon>StartPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestPage.aspx.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

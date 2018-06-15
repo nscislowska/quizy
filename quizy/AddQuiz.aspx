@@ -39,6 +39,7 @@
             </div>
         <div class="send">
             <asp:Label ID="label1" runat="server" Text="Zatwierdź pytania i przejdź do dodania odpowiedzi"/><br/>
+            <asp:Button ID="BackHomeButton" runat="server" Text="Powrót" OnClick="BackHomeButton_Click" />
             <asp:Button ID="sendButton" runat="server" Text="Przejdź dalej" OnClick="sendButton_Click" /><br //>
             <asp:Label ID="warningLabel3" CssClass="errorText" runat="server" Text=""></asp:Label>
         </div>
