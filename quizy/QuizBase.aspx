@@ -15,10 +15,11 @@
             Baza quizów
         </div>
        <div class="margin">
-        <div class="radiobuttonlist lower">
+        <div class="radiobuttonlist">
         <asp:RadioButtonList ID="QuizRadioButtonList" AutoPostBack="true" runat="server" OnSelectedIndexChanged="QuizRadioButtonList_SelectedIndexChanged">
         </asp:RadioButtonList>
             </div>
+
         <div class="margin sidemenu">
             <div class="margin">
             <asp:Button ID="BackButton" runat="server" Text="Wstecz" OnClick="BackButton_Click" />
